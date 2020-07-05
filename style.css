@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#admin-input,
+#user-input,
+#admin-commit,
+#result {
+  border: none;
+  margin: 10px 0 0 0;
+  font-size: 20px;
+  font-family: "Quicksand", sans-serif;
+  padding: 25px 10px;
+  border-radius: 5px;
+  width: 700px;
+  color: #f4f9f4;
+  background-color: #414141;
+  transition: all 0.2s ease-in;
+}
+#admin-input {
+  height: 35vh;
+}
+#user-input {
+  height: calc(10vh + 5px);
+  color: #f4f9f4;
+}
+#admin-commit {
+  padding: 35px 10px;
+  height: 5vh;
+  border: none;
+}
+
+#admin-commit:focus,
+#user-input:focus,
+#admin-input:focus {
+  outline: none;
+  background-color: #2b2b28;
+}
+
+.loading {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #2b2b28;
+  border-top: 5px solid #fff;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  animation: rotation 1s infinite linear;
+}
+@keyframes rotation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+#admin-commit::placeholder,
+#admin-input::placeholder,
+#user-input::placeholder {
+  color: gray;
+  transform-origin: left top;
+  transition: transform 0.3s ease-in;
+}
+
+#admin-commit:focus::placeholder,
+#admin-input:focus::placeholder,
+#user-input:focus::placeholder {
+  transform: scale(0.8) translateY(-100%);
+}
+#result {
+  height: 35vh;
+  display: none;
+  overflow-x: auto;
+  overflow-y: scroll;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  12.5% {
+    transform: rotate(0.0625deg);
+  }
+  25% {
+    transform: rotate(-0.125deg);
+  }
+  37.5% {
+    transform: rotate(0.1875deg);
+  }
+  50% {
+    transform: rotate(-0.25deg);
+  }
+  62.5% {
+    transform: rotate(0.1875deg);
+  }
+  75% {
+    transform: rotate(-0.125deg);
+  }
+  87.5% {
+    transform: rotate(0.0625deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.init-char {
+  color: #f4f9f4;
+}
+.false-char {
+  color: #ef4339;
+}
+.space-false-char {
+  background-color: #ef4339;
+}
+.true-char {
+  color: #a0c334;
+}
+
+/* Styling scrollbar */
+/* width */
+#admin-input::-webkit-scrollbar,
+#result::-webkit-scrollbar,
+#user-input::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#admin-input::-webkit-scrollbar-track,
+#result::-webkit-scrollbar-track,
+#user-input::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #414141;
+}
+
+/* Handle */
+#admin-input::-webkit-scrollbar-thumb,
+#result::-webkit-scrollbar-thumb,
+#user-input::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: gray;
+}
+/* set seclection */
+#result span.true-char::selection {
+  color: #f4f9f4;
+  background: lightgreen;
+}
+#result span.false-char::selection {
+  color: #f4f9f4;
+  background: lightcoral;
+}
+#result span.init-char::selection,
+#admin-commit::selection,
+#user-input::selection,
+#admin-input::selection {
+  color: #2b2b28;
+  background: lightgray;
+}
